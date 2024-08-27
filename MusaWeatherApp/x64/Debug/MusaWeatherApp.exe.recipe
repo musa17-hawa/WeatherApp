@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\cppFinalProject\MyWeatherApp\MusaWeatherApp\x64\Debug\MusaWeatherApp.exe</FullPath>
+      <FullPath>G:\cppFinalProject\MyWeatherApp\WeatherApp\x64\Debug\MusaWeatherApp.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,9 +1,12 @@
 # Ignore Visual Studio temporary files, build results, and
 .vs/
 x64/*
+x64
 !x64/Debug/
 !x64/Debug/*.dll
 assets/key.txt
+MusaWeatherApp
+
 *.user
 *.suo
 *.log
