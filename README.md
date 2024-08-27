@@ -50,7 +50,7 @@ Before you begin, ensure you have the following software installed on your machi
      ```
 
 
-## 🚀 Linux Installation
+## 🚀 VS Code Project
 
 1. **Clone the Repository**:
    ```bash
@@ -103,14 +103,13 @@ The application requires an API key from OpenWeatherMap to fetch weather data. E
 - **`CMakeLists.txt`**: CMake configuration file.
 - **`README.md`**: Project documentation.
 
-## 🤝 Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
-
 ## 📷 ScreenShots
 
 ![App Screenshot](/assets/Capture.JPG "App ScreenSHot")
+
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 ## 📝 License
 
