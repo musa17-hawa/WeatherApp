@@ -1,0 +1,25 @@
+# Ignore Visual Studio temporary files, build results, and
+.vs/
+x64/*
+!x64/Debug/
+!x64/Debug/*.dll
+assets/key.txt
+*.user
+*.suo
+*.log
+*.obj
+*.exe
+*.pch
+*.pdb
+*.idb
+*.ipch
+*.aps
+*.ncb
+*.res
+*.rsp
+*.sdf
+*.ilk
+*.cache
+*.ilk
+*.log
+*.exp
