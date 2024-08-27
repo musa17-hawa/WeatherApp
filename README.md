@@ -110,7 +110,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## 📷 ScreenShots
 
-![Alt text](https://drive.abualhawa.com/files/musa/cpp/Capture.JPG "App ScreenSHot")
+![App Screenshot](/assets/Capture.JPG "App ScreenSHot")
 
 ## 📝 License
 
