@@ -25,7 +25,7 @@ Before you begin, ensure you have the following software installed on your machi
 - **GLEW**: OpenGL Extension Wrangler Library.
 - **ImGui**: Immediate Mode GUI library.
 
-## 🚀 Installation
+## 🚀 Linux Installation
 
 1. **Clone the Repository**:
    ```bash
@@ -48,6 +48,25 @@ Before you begin, ensure you have the following software installed on your machi
      ```bash
      ./MusaWeatherApp
      ```
+
+
+## 🚀 Linux Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/MusaWeatherApp.git
+   cd MusaWeatherApp
+   ```
+
+2. **Run the Solution**:
+   - After cloning the repo, access the main folder and loate **MusaWeatherApp.sln**:
+   - Run the Solution
+
+3. **Notes**:
+   - Please make sure you have **Visual Studio Code 2022** installed
+   - Please note that this project could be incompatable with C++ 17
+
+
 
 ## 💻 Usage
 
@@ -87,6 +106,11 @@ The application requires an API key from OpenWeatherMap to fetch weather data. E
 ## 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+
+## 🤝 ScreenShots
+
+![Alt text](assets/Capture.jpg?raw=true "App ScreenSHot")
 
 ## 📝 License
 
