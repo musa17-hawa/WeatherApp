@@ -61,7 +61,7 @@ int main(int, char**) {
     std::vector<std::thread> threads;
     std::set<std::string> favorites;
     std::map<std::string, bool> selectedFavorites; // Map to track selection in My List
-    loadFavorites(cities, favorites); // Load favorite cities from file
+    loadMyCityList(cities, favorites); // Load favorite cities from file
     char cityNameBuffer[128] = ""; // Buffer for new city input
     char addCityBuffer[128] = "";  // Buffer for the "Add Place" popup
     bool selectAllCities = false;
@@ -102,7 +102,7 @@ int main(int, char**) {
     }
 
     // Function to add a random city using the weather API
-    auto addRandomCity = [&]() {
+    auto addRandomCity = [&]() { // lambda function
         // Generate random latitude and longitude
         double randomLat = (static_cast<double>(rand()) / RAND_MAX) * 180.0 - 90.0;  // Latitude between -90 and 90
         double randomLon = (static_cast<double>(rand()) / RAND_MAX) * 360.0 - 180.0; // Longitude between -180 and 180
@@ -169,7 +169,7 @@ int main(int, char**) {
         ImGui::Columns(3, NULL, false);
 
         // Column 1: City selection list (excluding those in My List)
-        ImGui::Text("Select cities:");
+        ImGui::Text("Select cities to get weather:");
         if (ImGui::Checkbox("Select All Cities", &selectAllCities)) {
             for (auto& city : cities) {
                 if (favorites.find(city.name) == favorites.end()) {
@@ -189,7 +189,7 @@ int main(int, char**) {
 
         // Column 2: My List (Favorites) with selection for weather fetching or removal
         ImGui::NextColumn();
-        ImGui::Text("My List:");
+        ImGui::Text("My List (Can not get weather from here):");
         if (ImGui::Checkbox("Select All MyList", &selectAllFavorites)) {
             for (auto& fav : favorites) {
                 selectedFavorites[fav] = selectAllFavorites;
@@ -249,7 +249,7 @@ int main(int, char**) {
                     // Fetch weather for cities in both main list and My List
                     for (auto& city : cities) {
                         if (city.selected) {
-                            threads.emplace_back(fetchWeatherDataForCity, std::ref(city)); // Fetch weather data in separate threads
+                            threads.emplace_back(getWeatherDataForEach, std::ref(city)); // Fetch weather data in separate threads
                         }
                     }
                     for (auto& fav : favorites) {
@@ -258,7 +258,7 @@ int main(int, char**) {
                                 return city.name == fav;
                                 });
                             if (itCity != cities.end()) {
-                                threads.emplace_back(fetchWeatherDataForCity, std::ref(*itCity));
+                                threads.emplace_back(getWeatherDataForEach, std::ref(*itCity));
                             }
                         }
                     }
@@ -289,7 +289,7 @@ int main(int, char**) {
                     return c.name == city.name;
                     }), cities.end());
             }
-            saveFavorites(favorites);
+            saveMyCityList(favorites);
             uncheckAllCities(cities);
         }
         ImGui::PopStyleColor(3);
@@ -316,7 +316,7 @@ int main(int, char**) {
                 }
                 selectedFavorites.erase(*it); // Remove from the selection state map
             }
-            saveFavorites(favorites);
+            saveMyCityList(favorites);
         }
         ImGui::PopStyleColor(3);
         ImGui::Dummy(ImVec2(0.0f, buttonSpacing));  // Add spacing

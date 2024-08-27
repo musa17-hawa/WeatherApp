@@ -41,13 +41,13 @@ extern std::atomic<int> threadsFinished;
 
 // Function Prototypes
 std::string readApiKeyFromFile(const std::string& filePath);
-void fetchWeatherDataForCity(City& city);
+void getWeatherDataForEach(City& city);
 bool validateCity(const std::string& cityName, double& lon, double& lat);
-void loadFavorites(std::vector<City>& cities, std::set<std::string>& favorites);
-void saveFavorites(const std::set<std::string>& favorites);
-void addFavorites(const std::vector<City>& cities, std::set<std::string>& favorites);
-void removeFavorites(const std::vector<City>& cities, std::set<std::string>& favorites);
-std::vector<City> filterFavorites(const std::vector<City>& cities, const std::set<std::string>& favorites);
+void loadMyCityList(std::vector<City>& cities, std::set<std::string>& favorites);
+void saveMyCityList(const std::set<std::string>& favorites);
+void addToMyCityList(const std::vector<City>& cities, std::set<std::string>& favorites);
+void removeFromMyList(const std::vector<City>& cities, std::set<std::string>& favorites);
+std::vector<City> filterMyList(const std::vector<City>& cities, const std::set<std::string>& favorites);
 std::string unixToHHMM(int unixTime);
 void uncheckAllCities(std::vector<City>& cities);
 void addNewPlace(const std::string& cityName); // Updated function to prevent duplicates

@@ -62,7 +62,7 @@ std::string readApiKeyFromFile(const std::string& filePath) {
 }
 
 // Function to Fetch Weather Data for a City
-void fetchWeatherDataForCity(City& city) {
+void getWeatherDataForEach(City& city) {
     httplib::Client cli("http://api.openweathermap.org");
     std::string url = "/data/2.5/weather?lat=" + std::to_string(city.lat) + "&lon=" + std::to_string(city.lon) + "&appid=" + api_key;
 
@@ -107,7 +107,7 @@ void addNewPlace(const std::string& cityName) {
 }
 
 // Function to Load Favorite Cities from a File
-void loadFavorites(std::vector<City>& cities, std::set<std::string>& favorites) {
+void loadMyCityList(std::vector<City>& cities, std::set<std::string>& favorites) {
     std::ifstream infile(favorites_file);
     std::string city;
     while (std::getline(infile, city)) {
@@ -121,36 +121,36 @@ void loadFavorites(std::vector<City>& cities, std::set<std::string>& favorites) 
     }
 }
 
-// Function to Save Favorite Cities to a File
-void saveFavorites(const std::set<std::string>& favorites) {
+// Function to Save Cities to a MyList File
+void saveMyCityList(const std::set<std::string>& favorites) {
     std::ofstream outfile(favorites_file);
     for (const auto& city : favorites) {
         outfile << city << std::endl;
     }
 }
 
-// Function to Add Selected Cities to Favorites (MyList)
-void addFavorites(const std::vector<City>& cities, std::set<std::string>& favorites) {
+// Function to Add Selected Cities to MyList
+void addToMyCityList(const std::vector<City>& cities, std::set<std::string>& myList) {
     for (const auto& city : cities) {
-        if (city.selected && favorites.find(city.name) == favorites.end()) {
-            favorites.insert(city.name);
+        if (city.selected && myList.find(city.name) == myList.end()) {
+            myList.insert(city.name);
         }
     }
-    saveFavorites(favorites);
+    saveMyCityList(myList);
 }
 
-// Function to Remove Selected Cities from Favorites (MyList)
-void removeFavorites(const std::vector<City>& cities, std::set<std::string>& favorites) {
+// Function to Remove Selected Cities from MyList
+void removeFromMyList(const std::vector<City>& cities, std::set<std::string>& favorites) {
     for (const auto& city : cities) {
         if (city.selected) {
             favorites.erase(city.name);
         }
     }
-    saveFavorites(favorites);
+    saveMyCityList(favorites);
 }
 
 // Function to Filter and Return Only Favorite Cities
-std::vector<City> filterFavorites(const std::vector<City>& cities, const std::set<std::string>& favorites) {
+std::vector<City> filterMyList(const std::vector<City>& cities, const std::set<std::string>& favorites) {
     std::vector<City> filteredCities;
     for (const auto& city : cities) {
         if (favorites.find(city.name) != favorites.end()) {
